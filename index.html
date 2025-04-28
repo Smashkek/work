@@ -9,53 +9,81 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik+Moonrocks&family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
 </head>
-<body>
-<div class="main">
-    <div class="left">
-<h1>{{name}}</h1>
-<h3>{{position}}</h3>
-<h2>контакти</h2>
-<ul>
-    {% for contact, link in contacts %}
-        {% if link %}
-            <li><a href={{link}}>{{contact}}</a></li>
-        {% else %}
-            <li>{{contact}}</li>
-        {% endif %}
-    {% endfor %}
-</ul>
-
-<h2>про мене</h2>
-<p>{{summary}}</p>
-
-        </div>
-<div class="right">
-<h2>навички</h2>
-<table border="1">
-    {% for i in range(0, skills|length, 4) %}
-        <tr>
-            {% for j in range(4) %}
-                {% if i + j < skills|length %}
-                    <td>{{ skills[i + j] }}</td>
-                {% else %}
-                    <td></td>
-                {% endif %}
-            {% endfor %}
-        </tr>
-    {% endfor %}
-</table>
-
-<h2>навчання</h2>
-<ul>
-    {% for ed in education %}
-        <li>{{ed}}</li>
-    {% endfor %}
-</ul>
-    <h2>цікаві факти</h2>
-        {% for fact in facts %}
-            <p>{{fact}}</p>
-        {% endfor %}
+    <div class="block">
+        <h1>все про мене</h1>
     </div>
-</div>
-</body>
+    <body>
+    <img id="img-1" src="https://cdn.pixabay.com/photo/2016/10/08/13/50/emotiguy-1723748_640.png">
+    <img id="img-2" src="https://cdn.shopify.com/s/files/1/1061/1924/files/Eye_Roll_Emoji_large.png?v=1541768914">
+    <img id="img-3" src="https://cdn.pixabay.com/photo/2020/02/10/11/18/smiley-4836223_1280.png">
+    <img id="img-4" src="https://kartinkof.club/uploads/posts/2022-04/1649564350_7-kartinkof-club-p-ugarnie-kartinki-smailiki-8.png">
+    <img id="img-5" src="https://i.pinimg.com/originals/80/c3/03/80c303488900a335990566ab43c61b51.gif">
+
+        <div class="main">
+            <div class="left">
+                <div class="block">
+                <img src="{{ url_for('static', filename='img.png') }}">
+                </div>
+                <div class="block">
+                    <h1>{{name}}</h1>
+                </div>
+
+                <div class="block">
+                    <h3>{{position}}</h3>
+                </div>
+
+                <div class="block">
+                    <h2>контакти</h2>
+                    <ul>
+                        {% for contact, link in contacts %}
+                            {% if link %}
+                                <li><a href={{link}}>{{contact}}</a></li>
+                            {% else %}
+                                <li>{{contact}}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="block">
+                    <h2>про мене</h2>
+                    <p>{{summary}}</p>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="block">
+                    <h2>навички</h2>
+                    <table border="1">
+                        {% for i in range(0, skills|length, 4) %}
+                            <tr>
+                                {% for j in range(4) %}
+                                    {% if i + j < skills|length %}
+                                        <td>{{ skills[i + j] }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div class="block">
+                    <h2>навчання</h2>
+                    <ul>
+                        {% for ed in education %}
+                            <li>{{ed}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="block">
+                    <h2>цікаві факти</h2>
+                    {% for fact in facts %}
+                        <p>{{fact}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
